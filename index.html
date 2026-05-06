@@ -125,7 +125,7 @@
             -webkit-appearance: none;
             font-size: 1rem;
             transition: border-color 0.3s ease;
-            color: #ffffff; /* Белый цвет текста для полей ввода на темном фоне */
+            color: #ffffff;
         }
         .rsvp-input option {
             background-color: #2a2a2a;
@@ -137,16 +137,13 @@
             border-bottom-color: var(--color-gold);
         }
 
-        /* Стиль для select, чтобы текст options был черным при выборе (для читаемости) */
         select.rsvp-input option {
             background-color: #f4f1ee;
             color: #1a1a1a;
         }
-        /* Но сам select на темном фоне остается светлым */
         select.rsvp-input {
             color: #ffffff;
         }
-        /* При открытии списка, фон options светлый, текст черный — контрастный */
         select.rsvp-input:focus option {
             background-color: #f4f1ee;
             color: #1a1a1a;
@@ -190,7 +187,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Анимация для появления блоков */
         .conditional-wrapper {
             overflow: hidden;
             transition: max-height 0.5s ease-out, opacity 0.4s ease, margin 0.4s ease;
@@ -206,7 +202,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Группа чекбоксов для напитков */
         .checkbox-group {
             display: flex;
             flex-direction: column;
@@ -230,7 +225,6 @@
             cursor: pointer;
         }
 
-        /* Дресс-код сетка */
         .dresscode-gallery {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -277,6 +271,16 @@
 
         .dresscode-item:hover img {
             transform: scale(1.03);
+        }
+        
+        /* Цветовые акценты для текста дресс-кода */
+        .color-swatch {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin: 0 2px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -349,7 +353,7 @@
         </div>
     </section>
 
-    <!-- Место + фото + важные пожелания (ДОБАВЛЕН ТЕКСТ ПРО ДЕТЕЙ) -->
+    <!-- Место + фото + важные пожелания -->
     <section class="py-24 md:py-32 px-6 bg-[#fcfbf9]">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="serif text-4xl md:text-5xl mb-12 italic" data-aos="fade-up">Детали торжества</h2>
@@ -380,9 +384,9 @@
                     <p class="font-light text-gray-500 mb-4 text-sm leading-relaxed">
                         <strong>Мы очень хотим, чтобы вы по-настоящему отдохнули и повеселились на нашей свадьбе!</strong>
                     </p>
-                    <!-- ДОБАВЛЕННЫЙ ТЕКСТ ПРО ДЕТЕЙ (без иконок) -->
                     <p class="font-light text-gray-500 text-sm leading-relaxed mt-4 pt-3 border-t border-gray-100">
-Если вы все же решите присутствовать с детьми, то не забудьте об этом указать в анкете подтверждения, чтобы мы смогли организовать для них комфортные условия.                    </p>
+                        Если вы планируете прийти с детьми, пожалуйста, укажите это в анкете ниже. Мы с радостью организуем для них отдельную зону с аниматором, чтобы и детям, и родителям было комфортно и весело.
+                    </p>
                 </div>
             </div>
         </div>
@@ -413,11 +417,31 @@
         </div>
     </section>
 
-    <!-- Блок ДРЕСС-КОД -->
+    <!-- Блок ДРЕСС-КОД с красивым текстом -->
     <section class="py-20 md:py-24 px-4 bg-white">
         <div class="max-w-5xl mx-auto">
-            <h2 class="serif text-4xl md:text-5xl text-center mb-10 italic" data-aos="fade-up">Дресс-код</h2>
-            <div class="dresscode-gallery" data-aos="fade-up" data-aos-delay="50">
+            <h2 class="serif text-4xl md:text-5xl text-center mb-6 italic" data-aos="fade-up">Дресс-код</h2>
+            
+            <!-- Элегантный текст-описание перед фотографиями -->
+            <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+                <p class="font-light text-gray-600 leading-relaxed">
+                    Мы будем очень рады, если вы поддержите цветовую гамму нашего торжества. 
+                    Вдохновляйтесь образами в оттенках <span class="text-[#c5a059] font-medium">золотого</span>, 
+                    <span class="text-[#8b7d6b] font-medium">песочного</span>, 
+                    <span class="text-[#4a4a4a] font-medium">графитового</span> и 
+                    <span class="text-[#d4c5a9] font-medium">шампань</span>. 
+                    Ваша элегантность станет прекрасным дополнением этого дня.
+                </p>
+                <div class="flex justify-center gap-3 mt-4">
+                    <span class="color-swatch" style="background-color: #c5a059;"></span>
+                    <span class="color-swatch" style="background-color: #d4c5a9;"></span>
+                    <span class="color-swatch" style="background-color: #8b7d6b;"></span>
+                    <span class="color-swatch" style="background-color: #4a4a4a;"></span>
+                    <span class="color-swatch" style="background-color: #f0e8de;"></span>
+                </div>
+            </div>
+            
+            <div class="dresscode-gallery" data-aos="fade-up" data-aos-delay="150">
                 <div class="dresscode-item"><img src="1.jpg" alt="дресс-код образ 1"></div>
                 <div class="dresscode-item"><img src="2.jpg" alt="дресс-код образ 2"></div>
                 <div class="dresscode-item"><img src="3.jpg" alt="дресс-код образ 3"></div>
@@ -437,6 +461,9 @@
                 <div class="dresscode-item"><img src="17.jpg" alt="дресс-код образ 17"></div>
                 <div class="dresscode-item"><img src="19.jpg" alt="дресс-код образ 18"></div>
             </div>
+            <p class="text-center text-xs text-gray-400 mt-8 italic" data-aos="fade-up" data-aos-delay="200">
+                Главное — ваше настроение и улыбка. Остальное — лишь изящные штрихи.
+            </p>
         </div>
     </section>
 
@@ -449,13 +476,11 @@
                 <p class="text-sm font-light text-gray-400">Пожалуйста, заполните форму ниже, чтобы мы могли учесть все детали. Будем признательны за ваш ответ <strong>до 01 августа 2026 года</strong>.</p>
             </div>
             <form id="weddingForm" action="https://formspree.io/f/mvzlkjzq" method="POST" class="space-y-8" data-aos="fade-up">
-                <!-- Имя -->
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Ваше имя и фамилия</label>
                     <input type="text" name="Имя и фамилия" placeholder="Иван Петров" required class="rsvp-input text-white text-base w-full">
                 </div>
                 
-                <!-- Присутствие -->
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Сможете ли Вы присутствовать?</label>
                     <select id="attendanceSelect" name="Присутствие" required class="rsvp-input text-white text-base w-full">
@@ -465,7 +490,6 @@
                     </select>
                 </div>
                 
-                <!-- Сопровождающие -->
                 <div id="companionQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">С вами кто-то будет?</label>
                     <select id="companionSelect" name="Сопровождающие" class="rsvp-input text-white text-base w-full">
@@ -474,7 +498,6 @@
                     </select>
                 </div>
                 
-                <!-- Имена гостей -->
                 <div id="guestNamesWrapper" class="conditional-wrapper">
                     <div>
                         <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Введите все имена (если с вами будут гости)</label>
@@ -483,7 +506,6 @@
                     </div>
                 </div>
 
-                <!-- Дети -->
                 <div id="kidsBlockWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Будут ли с вами дети?</label>
                     <select id="childrenSelect" name="Дети будут" class="rsvp-input text-white text-base w-full">
@@ -500,7 +522,6 @@
                     </div>
                 </div>
 
-                <!-- Напитки -->
                 <div id="drinksQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-3">Предпочтения в напитках (можно выбрать несколько)</label>
                     <div class="checkbox-group">
@@ -552,7 +573,6 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Логика формы
         const attendanceSelect = document.getElementById('attendanceSelect');
         const companionWrapper = document.getElementById('companionQuestionWrapper');
         const companionSelect = document.getElementById('companionSelect');
@@ -605,7 +625,6 @@
         hideAllConditional();
         if (attendanceSelect) attendanceSelect.value = '';
 
-        // Отправка формы
         const form = document.getElementById('weddingForm');
         const statusDiv = document.getElementById('formStatus');
         if (form) { 
