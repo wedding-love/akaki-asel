@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -26,6 +26,16 @@
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            font-size: 16px;
+        }
+
+        p, li, .text-base, .text-sm {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .text-xs {
+            font-size: 0.8rem;
         }
 
         .serif { font-family: 'Cormorant Garamond', serif; }
@@ -55,7 +65,7 @@
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 7rem);
+            font-size: clamp(2.8rem, 8vw, 7rem);
             line-height: 1.1;
         }
 
@@ -93,18 +103,19 @@
         }
 
         .timer-val {
-            font-size: clamp(1.8rem, 6vw, 4rem);
+            font-size: clamp(2rem, 7vw, 4.2rem);
             line-height: 1;
         }
 
         .timer-label {
-            font-size: clamp(0.5rem, 2vw, 0.75rem);
+            font-size: clamp(0.6rem, 2.2vw, 0.85rem);
             letter-spacing: 0.1em;
             text-transform: uppercase;
             opacity: 0.6;
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
+        /* Единый стиль для всех полей в анкете */
         .rsvp-input {
             background: transparent;
             border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -112,6 +123,8 @@
             width: 100%;
             border-radius: 0;
             -webkit-appearance: none;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
 
         .rsvp-input:focus {
@@ -128,6 +141,7 @@
             background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right center;
+            background-color: transparent;
         }
 
         .map-card {
@@ -156,13 +170,7 @@
             letter-spacing: 0.5px;
         }
 
-        .guest-badge {
-            background: rgba(197, 160, 89, 0.08);
-            border-left: 2px solid var(--color-gold);
-            transition: all 0.2s ease;
-        }
-
-        /* Скрытие полей по умолчанию */
+        /* Анимация для появления блоков — единый тонкий стиль, без лишних рамок */
         .conditional-wrapper {
             overflow: hidden;
             transition: max-height 0.5s ease-out, opacity 0.4s ease, margin 0.4s ease;
@@ -178,30 +186,31 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Чекбоксы для напитков */
+        /* Группа чекбоксов для напитков — сохраняем лаконичность */
         .checkbox-group {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.85rem;
+            margin-top: 0.5rem;
         }
         .checkbox-group label {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             font-weight: 300;
             cursor: pointer;
             color: rgba(255,255,255,0.85);
         }
         .checkbox-group input[type="checkbox"] {
             accent-color: var(--color-gold);
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             flex-shrink: 0;
             cursor: pointer;
         }
 
-        /* Сетка дресс-кода */
+        /* Дресс-код сетка без изменений */
         .dresscode-gallery {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -249,18 +258,6 @@
         .dresscode-item:hover img {
             transform: scale(1.03);
         }
-
-        .dresscode-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(197,160,89,0.08) 0%, rgba(0,0,0,0.02) 80%);
-            pointer-events: none;
-            border-radius: 12px;
-        }
     </style>
 </head>
 <body>
@@ -268,7 +265,7 @@
     <section class="hero-section">
         <div class="hero-image"></div>
         <div class="hero-content text-center text-white z-10 px-4">
-            <p class="uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6 font-light" data-aos="fade-down">Приглашение на свадьбу</p>
+            <p class="uppercase tracking-[0.4em] text-[11px] md:text-xs mb-6 font-light" data-aos="fade-down">Приглашение на свадьбу</p>
             <h1 class="serif hero-title italic font-light tracking-tighter mb-8" data-aos="zoom-out" data-aos-duration="2000">
                 Акаки <br class="md:hidden"> <span class="gold-text">&</span> Асель
             </h1>
@@ -332,7 +329,7 @@
         </div>
     </section>
 
-    <!-- Место + фото -->
+    <!-- Место + фото + важные пожелания -->
     <section class="py-24 md:py-32 px-6 bg-[#fcfbf9]">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="serif text-4xl md:text-5xl mb-12 italic" data-aos="fade-up">Детали торжества</h2>
@@ -346,7 +343,7 @@
                     </p>
                     <p class="font-light text-gray-400 text-xs mb-5 italic">Просторная веранда, уютный зал и живописный парк — идеальное место для нашего семейного торжества.</p>
                     <img src="место.jpg" alt="ЭкоПарк Раздолье" class="place-photo" onerror="this.style.display='none'">
-                    <a href="https://yandex.by/maps/org/ekopark_razdolye/113044700337/?ll=73.231749%2C55.030720&z=16.37" target="_blank" class="inline-block mt-6 px-8 py-3 bg-[#c5a059] text-white uppercase tracking-widest text-[9px] hover:bg-[#b38f4d] transition-all">
+                    <a href="https://yandex.by/maps/org/ekopark_razdolye/113044700337/?ll=73.231749%2C55.030720&z=16.37" target="_blank" class="inline-block mt-6 px-8 py-3 bg-[#c5a059] text-white uppercase tracking-widest text-[10px] hover:bg-[#b38f4d] transition-all">
                         Маршрут в Яндекс Картах
                     </a>
                 </div>
@@ -363,9 +360,6 @@
                     <p class="font-light text-gray-500 mb-4 text-sm leading-relaxed">
                         <strong>Мы очень хотим, чтобы вы по-настоящему отдохнули и повеселились на нашей свадьбе!</strong>
                     </p>
-                    <p class="font-light text-gray-500 text-sm leading-relaxed italic">
-                        Если вы всё же решите присутствовать с детьми, то не забудьте указать об этом в вашем ответе на приглашение, чтобы мы смогли организовать для них комфортные условия.
-                    </p>
                 </div>
             </div>
         </div>
@@ -374,7 +368,7 @@
     <!-- Таймер -->
     <section class="py-20 bg-[#f9f8f6]">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="uppercase tracking-widest text-[10px] text-gray-400 mb-10">До встречи осталось:</p>
+            <p class="uppercase tracking-widest text-[11px] text-gray-400 mb-10">До встречи осталось:</p>
             <div class="timer-container">
                 <div class="timer-item" data-aos="fade-up" data-aos-delay="100">
                     <span id="days" class="serif timer-val block font-light">00</span>
@@ -400,7 +394,6 @@
     <section class="py-20 md:py-24 px-4 bg-white">
         <div class="max-w-5xl mx-auto">
             <h2 class="serif text-4xl md:text-5xl text-center mb-10 italic" data-aos="fade-up">Дресс-код</h2>
-            
             <div class="dresscode-gallery" data-aos="fade-up" data-aos-delay="50">
                 <div class="dresscode-item"><img src="1.jpg" alt="дресс-код образ 1"></div>
                 <div class="dresscode-item"><img src="2.jpg" alt="дресс-код образ 2"></div>
@@ -424,68 +417,68 @@
         </div>
     </section>
 
-    <!-- RSVP форма -->
+    <!-- RSVP форма — все дополнительные вопросы теперь в едином стиле без отдельных рамок -->
     <section class="py-24 md:py-32 dark-section">
         <div class="max-w-2xl mx-auto px-6">
             <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="serif text-4xl md:text-6xl italic mb-4 gold-text">Подтверждение присутствия</h2>
-                <p class="font-extralight tracking-widest uppercase text-[10px] opacity-70 mb-4">Для нас очень важно ваше присутствие</p>
-                <p class="text-xs font-light text-gray-400">Пожалуйста, заполните форму ниже, чтобы мы могли учесть все детали. Будем признательны за ваш ответ <strong>до 01 августа 2026 года</strong>.</p>
+                <p class="font-extralight tracking-widest uppercase text-[11px] opacity-70 mb-4">Для нас очень важно ваше присутствие</p>
+                <p class="text-sm font-light text-gray-400">Пожалуйста, заполните форму ниже, чтобы мы могли учесть все детали. Будем признательны за ваш ответ <strong>до 01 августа 2026 года</strong>.</p>
             </div>
             <form id="weddingForm" action="https://formspree.io/f/mvzlkjzq" method="POST" class="space-y-8" data-aos="fade-up">
                 <!-- Имя -->
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Ваше имя и фамилия</label>
-                    <input type="text" name="Имя и фамилия" placeholder="Иван Петров" required class="rsvp-input text-white text-sm w-full">
+                    <input type="text" name="Имя и фамилия" placeholder="Иван Петров" required class="rsvp-input text-white text-base w-full">
                 </div>
                 
                 <!-- Присутствие -->
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Сможете ли Вы присутствовать?</label>
-                    <select id="attendanceSelect" name="Присутствие" required class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
+                    <select id="attendanceSelect" name="Присутствие" required class="rsvp-input text-white text-base w-full">
                         <option value="" disabled selected>-- Пожалуйста, выберите --</option>
                         <option value="Да, буду">Да, буду</option>
                         <option value="Нет, не смогу">Нет, не смогу</option>
                     </select>
                 </div>
                 
-                <!-- Сопровождающие (показывается если "Да, буду") -->
+                <!-- Сопровождающие (единый стиль, без рамок) -->
                 <div id="companionQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">С вами кто-то будет?</label>
-                    <select id="companionSelect" name="Сопровождающие" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
+                    <select id="companionSelect" name="Сопровождающие" class="rsvp-input text-white text-base w-full">
                         <option value="Нет">Нет, буду один/одна</option>
                         <option value="Да">Да, с парой/семьёй</option>
                     </select>
                 </div>
                 
-                <!-- Имена гостей (показывается если "Да") -->
+                <!-- Имена гостей (без рамок, только поле) -->
                 <div id="guestNamesWrapper" class="conditional-wrapper">
-                    <div class="guest-badge p-4 rounded-md">
-                        <p class="text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Введите все имена</p>
-                        <input type="text" id="guestNamesInput" name="Имена гостей" placeholder="Имена всех, кто с вами (супруг, дети, друзья)" class="rsvp-input text-white text-sm w-full bg-[#1a1a1a] border-b border-white/20">
-                        <p class="text-[9px] text-gray-400 mt-2 italic">Укажите, пожалуйста, полные имена ваших сопровождающих для рассадки и меню.</p>
+                    <div>
+                        <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Введите все имена (если с вами будут гости)</label>
+                        <input type="text" id="guestNamesInput" name="Имена гостей" placeholder="Имена всех, кто с вами (супруг, дети, друзья)" class="rsvp-input text-white text-base w-full">
+                        <p class="text-[10px] text-gray-400 mt-2 italic">Укажите, пожалуйста, полные имена ваших сопровождающих для рассадки и меню.</p>
                     </div>
                 </div>
 
-                <!-- Дети (показывается если "Да, буду") -->
-                <div id="childrenQuestionWrapper" style="display: none;">
+                <!-- Дети — теперь без обёртки-рамки, точно такой же как другие поля -->
+                <div id="kidsBlockWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Будут ли с вами дети?</label>
-                    <select id="childrenSelect" name="Дети" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
-                        <option value="Нет">Нет</option>
-                        <option value="Да">Да</option>
+                    <select id="childrenSelect" name="Дети будут" class="rsvp-input text-white text-base w-full">
+                        <option value="Нет">Нет, детей не будет</option>
+                        <option value="Да, с детьми">Да, дети будут с нами</option>
                     </select>
-                </div>
-                
-                <!-- Информация о детях (показывается если "Да") -->
-                <div id="childrenInfoWrapper" class="conditional-wrapper">
-                    <div class="guest-badge p-4 rounded-md">
-                        <p class="text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Имена и возраст детей</p>
-                        <input type="text" id="childrenInfoInput" name="Информация о детях" placeholder="Имя и возраст каждого ребёнка (например: Маша 5 лет, Петя 3 года)" class="rsvp-input text-white text-sm w-full bg-[#1a1a1a] border-b border-white/20">
-                        <p class="text-[9px] text-gray-400 mt-2 italic">Это поможет нам организовать для них комфортные условия и подготовить развлечения.</p>
+                    
+                    <!-- Дополнительное поле для информации о детях (появляется без дополнительных рамок) -->
+                    <div id="childrenInfoWrapper" class="conditional-wrapper">
+                        <div>
+                            <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2 mt-3">Имена и возраст детей</label>
+                            <input type="text" id="childrenInfoInput" name="Информация о детях" placeholder="Например: София 6 лет, Марк 4 года" class="rsvp-input text-white text-base w-full">
+                            <p class="text-[10px] text-gray-400 mt-2 italic">Мы подготовим для детей отдельную зону с аниматором. Нам важно знать возраст, чтобы организовать лучшее развлечение!</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Напитки (показывается если "Да, буду") -->
+                <!-- Напитки (лаконично, единый стиль) -->
                 <div id="drinksQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-3">Предпочтения в напитках (можно выбрать несколько)</label>
                     <div class="checkbox-group">
@@ -496,22 +489,7 @@
                         <label><input type="checkbox" name="Напитки" value="Коньяк"> Коньяк</label>
                         <label><input type="checkbox" name="Напитки" value="Безалкогольные напитки"> Безалкогольные напитки</label>
                     </div>
-                    <input type="text" name="Другой напиток" placeholder="Другое (впишите свой вариант)" class="rsvp-input text-white text-sm w-full mt-3 bg-[#1a1a1a] border-b border-white/20">
-                </div>
-
-                <!-- Аллергия (показывается если "Да, буду") -->
-                <div id="allergyQuestionWrapper" style="display: none;">
-                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Пищевая аллергия</label>
-                    <input type="text" name="Аллергия" placeholder="Укажите, если есть" class="rsvp-input text-white text-sm w-full">
-                </div>
-
-                <!-- Трансфер (показывается если "Да, буду") -->
-                <div id="transferQuestionWrapper" style="display: none;">
-                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Нужен ли Вам трансфер?</label>
-                    <select name="Трансфер" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
-                        <option value="Нет">Нет</option>
-                        <option value="Да">Да</option>
-                    </select>
+                    <input type="text" name="Другой напиток" placeholder="Другое (впишите свой вариант)" class="rsvp-input text-white text-base w-full mt-4">
                 </div>
 
                 <input type="hidden" name="_subject" value="Новый ответ на приглашение на свадьбу Акаки и Асель">
@@ -526,10 +504,10 @@
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="serif text-3xl md:text-4xl italic mb-12" data-aos="fade-up">Контакты</h2>
             <div class="grid md:grid-cols-2 gap-8 mb-10" data-aos="fade-up">
-                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Асель</h4><a href="tel:+799960741020" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 074-10-20</a></div>
-                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Акаки</h4><a href="tel:+799963982808" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 398-28-08</a></div>
+                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Асель</h4><a href="tel:+799960741020" class="contact-link text-base font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 074-10-20</a></div>
+                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Акаки</h4><a href="tel:+799963982808" class="contact-link text-base font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 398-28-08</a></div>
             </div>
-            <div class="flex justify-center" data-aos="fade-up"><div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6] w-full max-w-sm"><h4 class="serif text-xl mb-1">Организатор Марина</h4><a href="tel:+79230366863" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 (923) 036-68-63</a><p class="text-[9px] text-gray-400 mt-1">по любым вопросам</p></div></div>
+            <div class="flex justify-center" data-aos="fade-up"><div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6] w-full max-w-sm"><h4 class="serif text-xl mb-1">Организатор Марина</h4><a href="tel:+79230366863" class="contact-link text-base font-light text-gray-600 hover:text-[#c5a059] transition">+7 (923) 036-68-63</a><p class="text-[10px] text-gray-400 mt-1">по любым вопросам</p></div></div>
             <p class="text-xs text-gray-400 mt-10 font-light">Если у вас возникнут сложности с дорогой или особыми пожеланиями — позвоните или напишите нам. Будем на связи!</p>
         </div>
     </section>
@@ -552,70 +530,60 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // === ЛОГИКА ПОКАЗА/СКРЫТИЯ ПОЛЕЙ ===
+        // Управление видимостью — все блоки в едином стиле, без лишних декораций
         const attendanceSelect = document.getElementById('attendanceSelect');
         const companionWrapper = document.getElementById('companionQuestionWrapper');
         const companionSelect = document.getElementById('companionSelect');
         const guestWrapper = document.getElementById('guestNamesWrapper');
         const guestInput = document.getElementById('guestNamesInput');
-        const childrenWrapper = document.getElementById('childrenQuestionWrapper');
+        const kidsBlockWrapper = document.getElementById('kidsBlockWrapper');
         const childrenSelect = document.getElementById('childrenSelect');
         const childrenInfoWrapper = document.getElementById('childrenInfoWrapper');
         const childrenInfoInput = document.getElementById('childrenInfoInput');
         const drinksWrapper = document.getElementById('drinksQuestionWrapper');
-        const allergyWrapper = document.getElementById('allergyQuestionWrapper');
-        const transferWrapper = document.getElementById('transferQuestionWrapper');
 
-        // Список всех полей, которые показываются только если "Да, буду"
-        const conditionalFields = [companionWrapper, childrenWrapper, drinksWrapper, allergyWrapper, transferWrapper];
-
+        const conditionalMain = [companionWrapper, kidsBlockWrapper, drinksWrapper];
+        
         function hideAllConditional() {
-            conditionalFields.forEach(el => { if (el) el.style.display = 'none'; });
-            // Скрываем также вложенные поля
+            conditionalMain.forEach(el => { if (el) el.style.display = 'none'; });
             if (guestWrapper) guestWrapper.classList.remove('visible');
             if (childrenInfoWrapper) childrenInfoWrapper.classList.remove('visible');
-            // Сбрасываем значения селектов
             if (companionSelect) companionSelect.value = 'Нет';
             if (childrenSelect) childrenSelect.value = 'Нет';
-            // Очищаем инпуты
             if (guestInput) guestInput.value = '';
             if (childrenInfoInput) childrenInfoInput.value = '';
         }
-
+        
         function updateFormVisibility() {
             if (attendanceSelect.value === 'Да, буду') {
-                // Показываем все условные поля
-                conditionalFields.forEach(el => { if (el) el.style.display = 'block'; });
-                // Проверяем состояние сопровождающих
+                conditionalMain.forEach(el => { if (el) el.style.display = 'block'; });
+                
                 if (companionSelect && companionSelect.value === 'Да') {
                     if (guestWrapper) guestWrapper.classList.add('visible');
                 } else {
                     if (guestWrapper) guestWrapper.classList.remove('visible');
                     if (guestInput) guestInput.value = '';
                 }
-                // Проверяем состояние детей
-                if (childrenSelect && childrenSelect.value === 'Да') {
+                
+                if (childrenSelect && childrenSelect.value === 'Да, с детьми') {
                     if (childrenInfoWrapper) childrenInfoWrapper.classList.add('visible');
                 } else {
                     if (childrenInfoWrapper) childrenInfoWrapper.classList.remove('visible');
                     if (childrenInfoInput) childrenInfoInput.value = '';
                 }
             } else {
-                // Скрываем всё
                 hideAllConditional();
             }
         }
 
-        // Обработчики изменений
         if (attendanceSelect) attendanceSelect.addEventListener('change', updateFormVisibility);
         if (companionSelect) companionSelect.addEventListener('change', updateFormVisibility);
         if (childrenSelect) childrenSelect.addEventListener('change', updateFormVisibility);
-
-        // Начальное состояние
+        
         hideAllConditional();
         if (attendanceSelect) attendanceSelect.value = '';
 
-        // === ОТПРАВКА ФОРМЫ ===
+        // Отправка формы
         const form = document.getElementById('weddingForm');
         const statusDiv = document.getElementById('formStatus');
         if (form) { 
@@ -628,7 +596,7 @@
                 try { 
                     const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }); 
                     if (response.ok) { 
-                        statusDiv.innerHTML = 'Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением'; 
+                        statusDiv.innerHTML = 'Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением '; 
                         statusDiv.style.color = '#c5a059'; 
                         form.reset(); 
                         if (attendanceSelect) attendanceSelect.value = ''; 
