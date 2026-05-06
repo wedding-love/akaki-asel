@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
@@ -174,6 +173,71 @@
             max-height: 250px;
             opacity: 1;
         }
+
+        /* Сетка дресс-кода: адаптивная — на мобилках 3 колонки (6 рядов по 3 = 18 фото),
+           на планшетах и десктопах — 5 колонок (4 ряда: 3 полных по 5 + последний 3 фото) */
+        .dresscode-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* На планшетах (ширина от 640px) — 5 колонок, чтобы на десктопе и планшете было по 5 */
+        @media (min-width: 640px) {
+            .dresscode-gallery {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        /* На маленьких экранах чуть уменьшаем отступы */
+        @media (max-width: 480px) {
+            .dresscode-gallery {
+                gap: 0.5rem;
+            }
+        }
+
+        .dresscode-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background-color: #f0e8de;
+        }
+
+        .dresscode-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        .dresscode-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dresscode-item:hover img {
+            transform: scale(1.03);
+        }
+
+        /* легкий эффект свечения */
+        .dresscode-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(197,160,89,0.08) 0%, rgba(0,0,0,0.02) 80%);
+            pointer-events: none;
+            border-radius: 12px;
+        }
     </style>
 </head>
 <body>
@@ -212,7 +276,7 @@
         </div>
     </section>
 
-    <!-- Программа дня (обновленная) -->
+    <!-- Программа дня -->
     <section class="py-20 md:py-32 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
             <h2 class="serif text-4xl md:text-5xl text-center mb-16 italic" data-aos="fade-up">Программа дня</h2>
@@ -264,7 +328,6 @@
                     </a>
                 </div>
 
-                <!-- Пожелания (обновленный текст) -->
                 <div class="map-card p-8 rounded-sm shadow-sm" data-aos="fade-left">
                     <h3 class="serif text-2xl mb-4 text-[#c5a059]">Пожелания</h3>
                     <p class="font-light text-gray-500 mb-4 text-sm leading-relaxed">
@@ -304,24 +367,52 @@
         </div>
     </section>
 
-    <!-- Дресс-код -->
-    <section class="py-24 md:py-32 px-6 bg-white text-center">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="serif text-4xl md:text-5xl mb-8 italic" data-aos="fade-up">Дресс-код</h2>
-            <p class="font-light text-gray-500 mb-10 text-sm leading-relaxed" data-aos="fade-up">
-                Нам будет очень приятно, если вы поддержите стиль нашего праздника и выберете наряды в рамках предложенной палитры. Мы стремимся к созданию гармоничной и элегантной атмосферы.
-            </p>
-            <div class="flex justify-center gap-4 md:gap-6 mb-8" data-aos="zoom-in">
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#E5D3B3] shadow-sm"></div>
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#A39171] shadow-sm"></div>
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#4A4E69] shadow-sm"></div>
-                <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#22223B] shadow-sm"></div>
+    <!-- Блок ДРЕСС-КОД: адаптивная сетка (на телефоне 3 фото в ряд = 6 рядов, на планшете/десктопе 5 фото) -->
+    <section class="py-20 md:py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="serif text-4xl md:text-5xl text-center mb-10 italic" data-aos="fade-up">Дресс-код</h2>
+            
+            <!-- Сетка: на мобилках 3 колонки (получится 6 рядов по 3 фото = 18 элементов)
+                 на планшетах/десктопах 5 колонок (4 ряда: 3 ряда по 5 и последний ряд 3 фото) -->
+            <div class="dresscode-gallery" data-aos="fade-up" data-aos-delay="50">
+                <!-- Всего 18 квадратных фото. 
+                     На мобилке 3x6 = 18 (ровно, красиво, последний ряд полный)
+                     На десктопе 5x3 + 3 = 18 (3 полных ряда по 5 + последний ряд 3 элемента) -->
+                
+                <!-- Ряд 1 (3 фото для мобилки / часть ряда 1 для десктопа) -->
+                <div class="dresscode-item"><img src="1.jpg" alt="дресс-код образ 1"></div>
+                <div class="dresscode-item"><img src="2.jpg" alt="дресс-код образ 2"></div>
+                <div class="dresscode-item"><img src="3.jpg" alt="дресс-код образ 3"></div>
+                
+                <!-- Ряд 2 -->
+                <div class="dresscode-item"><img src="4.jpg" alt="дресс-код образ 4"></div>
+                <div class="dresscode-item"><img src="5.jpg" alt="дресс-код образ 5"></div>
+                <div class="dresscode-item"><img src="6.jpg" alt="дресс-код образ 6"></div>
+                
+                <!-- Ряд 3 -->
+                <div class="dresscode-item"><img src="7.jpg" alt="дресс-код образ 7"></div>
+                <div class="dresscode-item"><img src="8.jpg" alt="дресс-код образ 8"></div>
+                <div class="dresscode-item"><img src="9.jpg" alt="дресс-код образ 9"></div>
+                
+                <!-- Ряд 4 -->
+                <div class="dresscode-item"><img src="10.jpg" alt="дресс-код образ 10"></div>
+                <div class="dresscode-item"><img src="11.jpg" alt="дресс-код образ 11"></div>
+                <div class="dresscode-item"><img src="12.jpg" alt="дресс-код образ 12"></div>
+                
+                <!-- Ряд 5 -->
+                <div class="dresscode-item"><img src="13.jpg" alt="дресс-код образ 13"></div>
+                <div class="dresscode-item"><img src="14.jpg" alt="дресс-код образ 14"></div>
+                <div class="dresscode-item"><img src="15.jpg" alt="дресс-код образ 15"></div>
+                
+                <!-- Ряд 6 (последний ряд на мобилках, на десктопе это 3 фото последнего неполного ряда) -->
+                <div class="dresscode-item"><img src="16.jpg" alt="дресс-код образ 16"></div>
+                <div class="dresscode-item"><img src="17.jpg" alt="дресс-код образ 17"></div>
+                <div class="dresscode-item"><img src="19.jpg" alt="дресс-код образ 18"></div>
             </div>
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest italic">Предпочтительный стиль: Black Tie Optional</p>
         </div>
     </section>
 
-    <!-- RSVP форма: убраны значки, вопросы "Вы будете?" и "С вами кто-то будет?" (Да/Нет), при Да открывается поле для всех имён -->
+    <!-- RSVP форма -->
     <section class="py-24 md:py-32 dark-section">
         <div class="max-w-2xl mx-auto px-6">
             <div class="text-center mb-12" data-aos="fade-up">
@@ -330,12 +421,7 @@
                 <p class="text-xs font-light text-gray-400">Пожалуйста, заполните форму ниже, чтобы мы могли учесть все детали. Будем признательны за ваш ответ <strong>до 01 августа 2026 года</strong>.</p>
             </div>
             <form id="weddingForm" action="https://formspree.io/f/mvzlkjzq" method="POST" class="space-y-8" data-aos="fade-up">
-                <!-- Имя и фамилия -->
-                <div>
-                    <input type="text" name="name" placeholder="Ваше Имя и Фамилия" required class="rsvp-input text-white text-sm focus:border-[#c5a059] w-full">
-                </div>
-
-                <!-- Вопрос: Вы будете? (без emoji) -->
+                <div><input type="text" name="name" placeholder="Ваше Имя и Фамилия" required class="rsvp-input text-white text-sm focus:border-[#c5a059] w-full"></div>
                 <div>
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Вы будете?</label>
                     <select id="attendanceSelect" name="attendance" required class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
@@ -344,8 +430,6 @@
                         <option value="no">Нет, не смогу</option>
                     </select>
                 </div>
-
-                <!-- Отдельный вопрос: С вами кто-то будет? (показывается только при выборе "Да, буду") -->
                 <div id="companionQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">С вами кто-то будет?</label>
                     <select id="companionSelect" name="companion_status" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
@@ -353,8 +437,6 @@
                         <option value="yes">Да</option>
                     </select>
                 </div>
-
-                <!-- Динамическое поле для имён гостей (появляется если "Да") -->
                 <div id="guestNamesWrapper" class="guest-field-wrapper">
                     <div class="guest-badge p-4 rounded-md">
                         <p class="text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Введите все имена</p>
@@ -362,68 +444,36 @@
                         <p class="text-[9px] text-gray-400 mt-2 italic">Укажите, пожалуйста, полные имена ваших сопровождающих для рассадки и меню.</p>
                     </div>
                 </div>
-
                 <input type="hidden" name="_subject" value="Новый ответ на приглашение на свадьбу Акаки и Асель">
-                <div class="text-center pt-4">
-                    <button type="submit" class="w-full md:w-auto px-12 py-4 border border-[#c5a059] text-[#c5a059] uppercase tracking-widest text-[11px] hover:bg-[#c5a059] hover:text-white transition-all duration-500">
-                        Отправить ответ
-                    </button>
-                </div>
+                <div class="text-center pt-4"><button type="submit" class="w-full md:w-auto px-12 py-4 border border-[#c5a059] text-[#c5a059] uppercase tracking-widest text-[11px] hover:bg-[#c5a059] hover:text-white transition-all duration-500">Отправить ответ</button></div>
             </form>
             <div id="formStatus" class="text-center text-sm mt-6 text-[#c5a059] hidden"></div>
         </div>
     </section>
 
-    <!-- Блок КОНТАКТЫ: убраны все значки, жених и невеста на одной линии, организатор по центру -->
+    <!-- Контакты -->
     <section class="py-20 px-6 bg-white">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="serif text-3xl md:text-4xl italic mb-12" data-aos="fade-up">Контакты</h2>
-            <!-- Первая строка: жених и невеста в одной строке -->
             <div class="grid md:grid-cols-2 gap-8 mb-10" data-aos="fade-up">
-                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]">
-                    <h4 class="serif text-xl mb-1">Асель</h4>
-                    <a href="tel:+799960741020" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 074-10-20</a>
-                </div>
-                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]">
-                    <h4 class="serif text-xl mb-1">Акаки</h4>
-                    <a href="tel:+799963982808" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 398-28-08</a>
-                </div>
+                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Асель</h4><a href="tel:+799960741020" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 074-10-20</a></div>
+                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Акаки</h4><a href="tel:+799963982808" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 398-28-08</a></div>
             </div>
-            <!-- Организатор по центру -->
-            <div class="flex justify-center" data-aos="fade-up">
-                <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6] w-full max-w-sm">
-                    <h4 class="serif text-xl mb-1">Организатор Марина</h4>
-                    <a href="tel:+79230366863" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 (923) 036-68-63</a>
-                    <p class="text-[9px] text-gray-400 mt-1">по любым вопросам</p>
-                </div>
-            </div>
+            <div class="flex justify-center" data-aos="fade-up"><div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6] w-full max-w-sm"><h4 class="serif text-xl mb-1">Организатор Марина</h4><a href="tel:+79230366863" class="contact-link text-sm font-light text-gray-600 hover:text-[#c5a059] transition">+7 (923) 036-68-63</a><p class="text-[9px] text-gray-400 mt-1">по любым вопросам</p></div></div>
             <p class="text-xs text-gray-400 mt-10 font-light">Если у вас возникнут сложности с дорогой или особыми пожеланиями — позвоните или напишите нам. Будем на связи!</p>
         </div>
     </section>
 
-    <footer class="py-16 text-center bg-[#f9f8f6]">
-        <div class="serif text-2xl md:text-3xl italic mb-4">Акаки & Асель</div>
-        <p class="uppercase tracking-[0.3em] text-[9px] text-gray-400 mb-8">С любовью, до встречи!</p>
-        <div class="divider h-10"></div>
-        <p class="text-[8px] text-gray-300 mt-4">25 сентября 2026 | ЭкоПарк Раздолье</p>
-    </footer>
+    <footer class="py-16 text-center bg-[#f9f8f6]"><div class="serif text-2xl md:text-3xl italic mb-4">Акаки & Асель</div><p class="uppercase tracking-[0.3em] text-[9px] text-gray-400 mb-8">С любовью, до встречи!</p><div class="divider h-10"></div><p class="text-[8px] text-gray-300 mt-4">25 сентября 2026 | ЭкоПарк Раздолье</p></footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1200, once: true });
-
-        // Таймер на 25 сентября 2026, 15:00
         const targetDate = new Date("September 25, 2026 15:00:00").getTime();
         const updateCountdown = () => {
             const now = new Date().getTime();
             const distance = targetDate - now;
-            if (distance < 0) {
-                document.getElementById("days").innerText = "00";
-                document.getElementById("hours").innerText = "00";
-                document.getElementById("minutes").innerText = "00";
-                document.getElementById("seconds").innerText = "00";
-                return;
-            }
+            if (distance < 0) { document.getElementById("days").innerText = "00"; document.getElementById("hours").innerText = "00"; document.getElementById("minutes").innerText = "00"; document.getElementById("seconds").innerText = "00"; return; }
             document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
             document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
@@ -432,87 +482,20 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Логика для формы: показывать вопрос "С вами кто-то будет?" и при выборе "Да" — поле для всех имён
         const attendanceSelect = document.getElementById('attendanceSelect');
         const companionWrapper = document.getElementById('companionQuestionWrapper');
         const companionSelect = document.getElementById('companionSelect');
         const guestWrapper = document.getElementById('guestNamesWrapper');
         const guestInput = document.getElementById('guestNamesInput');
-
-        function toggleCompanionQuestion() {
-            if (attendanceSelect.value === 'yes') {
-                companionWrapper.style.display = 'block';
-                // Проверяем выбор в companionSelect (Да/Нет)
-                if (companionSelect.value === 'yes') {
-                    guestWrapper.classList.add('visible');
-                } else {
-                    guestWrapper.classList.remove('visible');
-                    if (guestInput) guestInput.value = '';
-                }
-            } else {
-                companionWrapper.style.display = 'none';
-                guestWrapper.classList.remove('visible');
-                if (companionSelect) companionSelect.value = 'no';
-                if (guestInput) guestInput.value = '';
-            }
-        }
-
-        function toggleGuestNames() {
-            if (attendanceSelect.value === 'yes' && companionSelect.value === 'yes') {
-                guestWrapper.classList.add('visible');
-            } else {
-                guestWrapper.classList.remove('visible');
-                if (guestInput) guestInput.value = '';
-            }
-        }
-
-        if (attendanceSelect) {
-            attendanceSelect.addEventListener('change', toggleCompanionQuestion);
-        }
-        if (companionSelect) {
-            companionSelect.addEventListener('change', toggleGuestNames);
-        }
-        // Инициализация при загрузке
+        function toggleCompanionQuestion() { if (attendanceSelect.value === 'yes') { companionWrapper.style.display = 'block'; if (companionSelect.value === 'yes') guestWrapper.classList.add('visible'); else { guestWrapper.classList.remove('visible'); if (guestInput) guestInput.value = ''; } } else { companionWrapper.style.display = 'none'; guestWrapper.classList.remove('visible'); if (companionSelect) companionSelect.value = 'no'; if (guestInput) guestInput.value = ''; } }
+        function toggleGuestNames() { if (attendanceSelect.value === 'yes' && companionSelect.value === 'yes') guestWrapper.classList.add('visible'); else { guestWrapper.classList.remove('visible'); if (guestInput) guestInput.value = ''; } }
+        if (attendanceSelect) attendanceSelect.addEventListener('change', toggleCompanionQuestion);
+        if (companionSelect) companionSelect.addEventListener('change', toggleGuestNames);
         toggleCompanionQuestion();
 
-        // Отправка формы через Formspree с AJAX
         const form = document.getElementById('weddingForm');
         const statusDiv = document.getElementById('formStatus');
-        
-        if (form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const formData = new FormData(form);
-                statusDiv.classList.remove('hidden');
-                statusDiv.innerHTML = '⏳ Отправляем...';
-                statusDiv.style.color = '#c5a059';
-                
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    if (response.ok) {
-                        statusDiv.innerHTML = '✨ Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением ✨';
-                        statusDiv.style.color = '#c5a059';
-                        form.reset();
-                        // Сбросить состояние динамических полей
-                        if (attendanceSelect) attendanceSelect.value = '';
-                        toggleCompanionQuestion();
-                        setTimeout(() => { statusDiv.classList.add('hidden'); }, 5000);
-                    } else {
-                        statusDiv.innerHTML = '❌ Ошибка при отправке. Попробуйте ещё раз или свяжитесь с нами.';
-                        statusDiv.style.color = '#e6b422';
-                    }
-                } catch (err) {
-                    statusDiv.innerHTML = '⚠️ Не удалось отправить. Проверьте интернет или напишите нам в мессенджеры.';
-                    statusDiv.style.color = '#e6b422';
-                }
-                setTimeout(() => { if(statusDiv.classList) statusDiv.classList.add('hidden'); }, 6000);
-            });
-        }
+        if (form) { form.addEventListener('submit', async (e) => { e.preventDefault(); const formData = new FormData(form); statusDiv.classList.remove('hidden'); statusDiv.innerHTML = ' Отправляем...'; statusDiv.style.color = '#c5a059'; try { const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }); if (response.ok) { statusDiv.innerHTML = ' Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением '; statusDiv.style.color = '#c5a059'; form.reset(); if (attendanceSelect) attendanceSelect.value = ''; toggleCompanionQuestion(); setTimeout(() => { statusDiv.classList.add('hidden'); }, 5000); } else { statusDiv.innerHTML = '❌ Ошибка при отправке. Попробуйте ещё раз или свяжитесь с нами.'; statusDiv.style.color = '#e6b422'; } } catch (err) { statusDiv.innerHTML = ' Не удалось отправить. Проверьте интернет или напишите нам в мессенджеры.'; statusDiv.style.color = '#e6b422'; } setTimeout(() => { if(statusDiv.classList) statusDiv.classList.add('hidden'); }, 6000); }); }
     </script>
 </body>
 </html>
-
