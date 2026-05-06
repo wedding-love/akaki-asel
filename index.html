@@ -162,20 +162,46 @@
             transition: all 0.2s ease;
         }
 
-        /* Скрытие поля с гостями по умолчанию */
-        .guest-field-wrapper {
+        /* Скрытие полей по умолчанию */
+        .conditional-wrapper {
             overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease;
+            transition: max-height 0.5s ease-out, opacity 0.4s ease, margin 0.4s ease;
             max-height: 0;
             opacity: 0;
+            margin-top: 0;
+            margin-bottom: 0;
         }
-        .guest-field-wrapper.visible {
-            max-height: 250px;
+        .conditional-wrapper.visible {
+            max-height: 800px;
             opacity: 1;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Сетка дресс-кода: адаптивная — на мобилках 3 колонки (6 рядов по 3 = 18 фото),
-           на планшетах и десктопах — 5 колонок (4 ряда: 3 полных по 5 + последний 3 фото) */
+        /* Чекбоксы для напитков */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 300;
+            cursor: pointer;
+            color: rgba(255,255,255,0.85);
+        }
+        .checkbox-group input[type="checkbox"] {
+            accent-color: var(--color-gold);
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        /* Сетка дресс-кода */
         .dresscode-gallery {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -185,7 +211,6 @@
             margin-right: auto;
         }
 
-        /* На планшетах (ширина от 640px) — 5 колонок, чтобы на десктопе и планшете было по 5 */
         @media (min-width: 640px) {
             .dresscode-gallery {
                 grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -193,7 +218,6 @@
             }
         }
 
-        /* На маленьких экранах чуть уменьшаем отступы */
         @media (max-width: 480px) {
             .dresscode-gallery {
                 gap: 0.5rem;
@@ -226,7 +250,6 @@
             transform: scale(1.03);
         }
 
-        /* легкий эффект свечения */
         .dresscode-item::after {
             content: '';
             position: absolute;
@@ -334,8 +357,14 @@
                         Дорогие гости, для нас важно, чтобы этот день был наполнен уютом и теплом.
                         Мы будем рады, если <strong>вместо охапок цветов</strong> вы принесёте в наш семейный бар бутылочку любимого алкоголя — так мы создадим домашнюю коллекцию с историей каждого из вас.
                     </p>
-                    <p class="font-light text-gray-500 text-sm leading-relaxed">
+                    <p class="font-light text-gray-500 mb-4 text-sm leading-relaxed">
                         А ещё мы отменили традицию <strong>«Горько»</strong>. Нам и так будет сладко от ваших улыбок! Поздравления, объятия и тёплые слова приветствуются, а <strong>конверты с пожеланиями</strong> будут самым ценным вкладом в наше общее будущее.
+                    </p>
+                    <p class="font-light text-gray-500 mb-4 text-sm leading-relaxed">
+                        <strong>Мы очень хотим, чтобы вы по-настоящему отдохнули и повеселились на нашей свадьбе!</strong>
+                    </p>
+                    <p class="font-light text-gray-500 text-sm leading-relaxed italic">
+                        Если вы всё же решите присутствовать с детьми, то не забудьте указать об этом в вашем ответе на приглашение, чтобы мы смогли организовать для них комфортные условия.
                     </p>
                 </div>
             </div>
@@ -367,44 +396,27 @@
         </div>
     </section>
 
-    <!-- Блок ДРЕСС-КОД: адаптивная сетка (на телефоне 3 фото в ряд = 6 рядов, на планшете/десктопе 5 фото) -->
+    <!-- Блок ДРЕСС-КОД -->
     <section class="py-20 md:py-24 px-4 bg-white">
         <div class="max-w-5xl mx-auto">
             <h2 class="serif text-4xl md:text-5xl text-center mb-10 italic" data-aos="fade-up">Дресс-код</h2>
             
-            <!-- Сетка: на мобилках 3 колонки (получится 6 рядов по 3 фото = 18 элементов)
-                 на планшетах/десктопах 5 колонок (4 ряда: 3 ряда по 5 и последний ряд 3 фото) -->
             <div class="dresscode-gallery" data-aos="fade-up" data-aos-delay="50">
-                <!-- Всего 18 квадратных фото. 
-                     На мобилке 3x6 = 18 (ровно, красиво, последний ряд полный)
-                     На десктопе 5x3 + 3 = 18 (3 полных ряда по 5 + последний ряд 3 элемента) -->
-                
-                <!-- Ряд 1 (3 фото для мобилки / часть ряда 1 для десктопа) -->
                 <div class="dresscode-item"><img src="1.jpg" alt="дресс-код образ 1"></div>
                 <div class="dresscode-item"><img src="2.jpg" alt="дресс-код образ 2"></div>
                 <div class="dresscode-item"><img src="3.jpg" alt="дресс-код образ 3"></div>
-                
-                <!-- Ряд 2 -->
                 <div class="dresscode-item"><img src="4.jpg" alt="дресс-код образ 4"></div>
                 <div class="dresscode-item"><img src="5.jpg" alt="дресс-код образ 5"></div>
                 <div class="dresscode-item"><img src="6.jpg" alt="дресс-код образ 6"></div>
-                
-                <!-- Ряд 3 -->
                 <div class="dresscode-item"><img src="7.jpg" alt="дресс-код образ 7"></div>
                 <div class="dresscode-item"><img src="8.jpg" alt="дресс-код образ 8"></div>
                 <div class="dresscode-item"><img src="9.jpg" alt="дресс-код образ 9"></div>
-                
-                <!-- Ряд 4 -->
                 <div class="dresscode-item"><img src="10.jpg" alt="дресс-код образ 10"></div>
                 <div class="dresscode-item"><img src="11.jpg" alt="дресс-код образ 11"></div>
                 <div class="dresscode-item"><img src="12.jpg" alt="дресс-код образ 12"></div>
-                
-                <!-- Ряд 5 -->
                 <div class="dresscode-item"><img src="13.jpg" alt="дресс-код образ 13"></div>
                 <div class="dresscode-item"><img src="14.jpg" alt="дресс-код образ 14"></div>
                 <div class="dresscode-item"><img src="15.jpg" alt="дресс-код образ 15"></div>
-                
-                <!-- Ряд 6 (последний ряд на мобилках, на десктопе это 3 фото последнего неполного ряда) -->
                 <div class="dresscode-item"><img src="16.jpg" alt="дресс-код образ 16"></div>
                 <div class="dresscode-item"><img src="17.jpg" alt="дресс-код образ 17"></div>
                 <div class="dresscode-item"><img src="19.jpg" alt="дресс-код образ 18"></div>
@@ -421,29 +433,87 @@
                 <p class="text-xs font-light text-gray-400">Пожалуйста, заполните форму ниже, чтобы мы могли учесть все детали. Будем признательны за ваш ответ <strong>до 01 августа 2026 года</strong>.</p>
             </div>
             <form id="weddingForm" action="https://formspree.io/f/mvzlkjzq" method="POST" class="space-y-8" data-aos="fade-up">
-                <div><input type="text" name="name" placeholder="Ваше Имя и Фамилия" required class="rsvp-input text-white text-sm focus:border-[#c5a059] w-full"></div>
+                <!-- Имя -->
                 <div>
-                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Вы будете?</label>
-                    <select id="attendanceSelect" name="attendance" required class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
+                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Ваше имя и фамилия</label>
+                    <input type="text" name="Имя и фамилия" placeholder="Иван Петров" required class="rsvp-input text-white text-sm w-full">
+                </div>
+                
+                <!-- Присутствие -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Сможете ли Вы присутствовать?</label>
+                    <select id="attendanceSelect" name="Присутствие" required class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
                         <option value="" disabled selected>-- Пожалуйста, выберите --</option>
-                        <option value="yes">Да, буду</option>
-                        <option value="no">Нет, не смогу</option>
+                        <option value="Да, буду">Да, буду</option>
+                        <option value="Нет, не смогу">Нет, не смогу</option>
                     </select>
                 </div>
+                
+                <!-- Сопровождающие (показывается если "Да, буду") -->
                 <div id="companionQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">С вами кто-то будет?</label>
-                    <select id="companionSelect" name="companion_status" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
-                        <option value="no">Нет</option>
-                        <option value="yes">Да</option>
+                    <select id="companionSelect" name="Сопровождающие" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
+                        <option value="Нет">Нет, буду один/одна</option>
+                        <option value="Да">Да, с парой/семьёй</option>
                     </select>
                 </div>
-                <div id="guestNamesWrapper" class="guest-field-wrapper">
+                
+                <!-- Имена гостей (показывается если "Да") -->
+                <div id="guestNamesWrapper" class="conditional-wrapper">
                     <div class="guest-badge p-4 rounded-md">
                         <p class="text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Введите все имена</p>
-                        <input type="text" id="guestNamesInput" name="guests_names" placeholder="Имена всех, кто с вами (супруг, дети, друзья)" class="rsvp-input text-white text-sm w-full bg-[#1a1a1a] border-b border-white/20">
+                        <input type="text" id="guestNamesInput" name="Имена гостей" placeholder="Имена всех, кто с вами (супруг, дети, друзья)" class="rsvp-input text-white text-sm w-full bg-[#1a1a1a] border-b border-white/20">
                         <p class="text-[9px] text-gray-400 mt-2 italic">Укажите, пожалуйста, полные имена ваших сопровождающих для рассадки и меню.</p>
                     </div>
                 </div>
+
+                <!-- Дети (показывается если "Да, буду") -->
+                <div id="childrenQuestionWrapper" style="display: none;">
+                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Будут ли с вами дети?</label>
+                    <select id="childrenSelect" name="Дети" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
+                        <option value="Нет">Нет</option>
+                        <option value="Да">Да</option>
+                    </select>
+                </div>
+                
+                <!-- Информация о детях (показывается если "Да") -->
+                <div id="childrenInfoWrapper" class="conditional-wrapper">
+                    <div class="guest-badge p-4 rounded-md">
+                        <p class="text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Имена и возраст детей</p>
+                        <input type="text" id="childrenInfoInput" name="Информация о детях" placeholder="Имя и возраст каждого ребёнка (например: Маша 5 лет, Петя 3 года)" class="rsvp-input text-white text-sm w-full bg-[#1a1a1a] border-b border-white/20">
+                        <p class="text-[9px] text-gray-400 mt-2 italic">Это поможет нам организовать для них комфортные условия и подготовить развлечения.</p>
+                    </div>
+                </div>
+
+                <!-- Напитки (показывается если "Да, буду") -->
+                <div id="drinksQuestionWrapper" style="display: none;">
+                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-3">Предпочтения в напитках (можно выбрать несколько)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="Напитки" value="Красное вино"> Красное вино</label>
+                        <label><input type="checkbox" name="Напитки" value="Белое вино"> Белое вино</label>
+                        <label><input type="checkbox" name="Напитки" value="Шампанское"> Шампанское</label>
+                        <label><input type="checkbox" name="Напитки" value="Водка"> Водка</label>
+                        <label><input type="checkbox" name="Напитки" value="Коньяк"> Коньяк</label>
+                        <label><input type="checkbox" name="Напитки" value="Безалкогольные напитки"> Безалкогольные напитки</label>
+                    </div>
+                    <input type="text" name="Другой напиток" placeholder="Другое (впишите свой вариант)" class="rsvp-input text-white text-sm w-full mt-3 bg-[#1a1a1a] border-b border-white/20">
+                </div>
+
+                <!-- Аллергия (показывается если "Да, буду") -->
+                <div id="allergyQuestionWrapper" style="display: none;">
+                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Пищевая аллергия</label>
+                    <input type="text" name="Аллергия" placeholder="Укажите, если есть" class="rsvp-input text-white text-sm w-full">
+                </div>
+
+                <!-- Трансфер (показывается если "Да, буду") -->
+                <div id="transferQuestionWrapper" style="display: none;">
+                    <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Нужен ли Вам трансфер?</label>
+                    <select name="Трансфер" class="rsvp-input text-white text-sm bg-[#1a1a1a] w-full">
+                        <option value="Нет">Нет</option>
+                        <option value="Да">Да</option>
+                    </select>
+                </div>
+
                 <input type="hidden" name="_subject" value="Новый ответ на приглашение на свадьбу Акаки и Асель">
                 <div class="text-center pt-4"><button type="submit" class="w-full md:w-auto px-12 py-4 border border-[#c5a059] text-[#c5a059] uppercase tracking-widest text-[11px] hover:bg-[#c5a059] hover:text-white transition-all duration-500">Отправить ответ</button></div>
             </form>
@@ -482,20 +552,99 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
+        // === ЛОГИКА ПОКАЗА/СКРЫТИЯ ПОЛЕЙ ===
         const attendanceSelect = document.getElementById('attendanceSelect');
         const companionWrapper = document.getElementById('companionQuestionWrapper');
         const companionSelect = document.getElementById('companionSelect');
         const guestWrapper = document.getElementById('guestNamesWrapper');
         const guestInput = document.getElementById('guestNamesInput');
-        function toggleCompanionQuestion() { if (attendanceSelect.value === 'yes') { companionWrapper.style.display = 'block'; if (companionSelect.value === 'yes') guestWrapper.classList.add('visible'); else { guestWrapper.classList.remove('visible'); if (guestInput) guestInput.value = ''; } } else { companionWrapper.style.display = 'none'; guestWrapper.classList.remove('visible'); if (companionSelect) companionSelect.value = 'no'; if (guestInput) guestInput.value = ''; } }
-        function toggleGuestNames() { if (attendanceSelect.value === 'yes' && companionSelect.value === 'yes') guestWrapper.classList.add('visible'); else { guestWrapper.classList.remove('visible'); if (guestInput) guestInput.value = ''; } }
-        if (attendanceSelect) attendanceSelect.addEventListener('change', toggleCompanionQuestion);
-        if (companionSelect) companionSelect.addEventListener('change', toggleGuestNames);
-        toggleCompanionQuestion();
+        const childrenWrapper = document.getElementById('childrenQuestionWrapper');
+        const childrenSelect = document.getElementById('childrenSelect');
+        const childrenInfoWrapper = document.getElementById('childrenInfoWrapper');
+        const childrenInfoInput = document.getElementById('childrenInfoInput');
+        const drinksWrapper = document.getElementById('drinksQuestionWrapper');
+        const allergyWrapper = document.getElementById('allergyQuestionWrapper');
+        const transferWrapper = document.getElementById('transferQuestionWrapper');
 
+        // Список всех полей, которые показываются только если "Да, буду"
+        const conditionalFields = [companionWrapper, childrenWrapper, drinksWrapper, allergyWrapper, transferWrapper];
+
+        function hideAllConditional() {
+            conditionalFields.forEach(el => { if (el) el.style.display = 'none'; });
+            // Скрываем также вложенные поля
+            if (guestWrapper) guestWrapper.classList.remove('visible');
+            if (childrenInfoWrapper) childrenInfoWrapper.classList.remove('visible');
+            // Сбрасываем значения селектов
+            if (companionSelect) companionSelect.value = 'Нет';
+            if (childrenSelect) childrenSelect.value = 'Нет';
+            // Очищаем инпуты
+            if (guestInput) guestInput.value = '';
+            if (childrenInfoInput) childrenInfoInput.value = '';
+        }
+
+        function updateFormVisibility() {
+            if (attendanceSelect.value === 'Да, буду') {
+                // Показываем все условные поля
+                conditionalFields.forEach(el => { if (el) el.style.display = 'block'; });
+                // Проверяем состояние сопровождающих
+                if (companionSelect && companionSelect.value === 'Да') {
+                    if (guestWrapper) guestWrapper.classList.add('visible');
+                } else {
+                    if (guestWrapper) guestWrapper.classList.remove('visible');
+                    if (guestInput) guestInput.value = '';
+                }
+                // Проверяем состояние детей
+                if (childrenSelect && childrenSelect.value === 'Да') {
+                    if (childrenInfoWrapper) childrenInfoWrapper.classList.add('visible');
+                } else {
+                    if (childrenInfoWrapper) childrenInfoWrapper.classList.remove('visible');
+                    if (childrenInfoInput) childrenInfoInput.value = '';
+                }
+            } else {
+                // Скрываем всё
+                hideAllConditional();
+            }
+        }
+
+        // Обработчики изменений
+        if (attendanceSelect) attendanceSelect.addEventListener('change', updateFormVisibility);
+        if (companionSelect) companionSelect.addEventListener('change', updateFormVisibility);
+        if (childrenSelect) childrenSelect.addEventListener('change', updateFormVisibility);
+
+        // Начальное состояние
+        hideAllConditional();
+        if (attendanceSelect) attendanceSelect.value = '';
+
+        // === ОТПРАВКА ФОРМЫ ===
         const form = document.getElementById('weddingForm');
         const statusDiv = document.getElementById('formStatus');
-        if (form) { form.addEventListener('submit', async (e) => { e.preventDefault(); const formData = new FormData(form); statusDiv.classList.remove('hidden'); statusDiv.innerHTML = ' Отправляем...'; statusDiv.style.color = '#c5a059'; try { const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }); if (response.ok) { statusDiv.innerHTML = ' Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением '; statusDiv.style.color = '#c5a059'; form.reset(); if (attendanceSelect) attendanceSelect.value = ''; toggleCompanionQuestion(); setTimeout(() => { statusDiv.classList.add('hidden'); }, 5000); } else { statusDiv.innerHTML = '❌ Ошибка при отправке. Попробуйте ещё раз или свяжитесь с нами.'; statusDiv.style.color = '#e6b422'; } } catch (err) { statusDiv.innerHTML = ' Не удалось отправить. Проверьте интернет или напишите нам в мессенджеры.'; statusDiv.style.color = '#e6b422'; } setTimeout(() => { if(statusDiv.classList) statusDiv.classList.add('hidden'); }, 6000); }); }
+        if (form) { 
+            form.addEventListener('submit', async (e) => { 
+                e.preventDefault(); 
+                const formData = new FormData(form); 
+                statusDiv.classList.remove('hidden'); 
+                statusDiv.innerHTML = 'Отправляем...'; 
+                statusDiv.style.color = '#c5a059'; 
+                try { 
+                    const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }); 
+                    if (response.ok) { 
+                        statusDiv.innerHTML = 'Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением'; 
+                        statusDiv.style.color = '#c5a059'; 
+                        form.reset(); 
+                        if (attendanceSelect) attendanceSelect.value = ''; 
+                        hideAllConditional(); 
+                        setTimeout(() => { statusDiv.classList.add('hidden'); }, 5000); 
+                    } else { 
+                        statusDiv.innerHTML = 'Ошибка при отправке. Попробуйте ещё раз или свяжитесь с нами.'; 
+                        statusDiv.style.color = '#e6b422'; 
+                    } 
+                } catch (err) { 
+                    statusDiv.innerHTML = 'Не удалось отправить. Проверьте интернет или напишите нам в мессенджеры.'; 
+                    statusDiv.style.color = '#e6b422'; 
+                } 
+                setTimeout(() => { if(statusDiv.classList) statusDiv.classList.add('hidden'); }, 6000); 
+            }); 
+        }
     </script>
 </body>
 </html>
