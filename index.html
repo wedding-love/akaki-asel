@@ -125,11 +125,31 @@
             -webkit-appearance: none;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            color: #ffffff; /* Белый цвет текста для полей ввода на темном фоне */
+        }
+        .rsvp-input option {
+            background-color: #2a2a2a;
+            color: #ffffff;
         }
 
         .rsvp-input:focus {
             outline: none;
             border-bottom-color: var(--color-gold);
+        }
+
+        /* Стиль для select, чтобы текст options был черным при выборе (для читаемости) */
+        select.rsvp-input option {
+            background-color: #f4f1ee;
+            color: #1a1a1a;
+        }
+        /* Но сам select на темном фоне остается светлым */
+        select.rsvp-input {
+            color: #ffffff;
+        }
+        /* При открытии списка, фон options светлый, текст черный — контрастный */
+        select.rsvp-input:focus option {
+            background-color: #f4f1ee;
+            color: #1a1a1a;
         }
 
         .dark-section {
@@ -170,7 +190,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Анимация для появления блоков — единый тонкий стиль, без лишних рамок */
+        /* Анимация для появления блоков */
         .conditional-wrapper {
             overflow: hidden;
             transition: max-height 0.5s ease-out, opacity 0.4s ease, margin 0.4s ease;
@@ -186,7 +206,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Группа чекбоксов для напитков — сохраняем лаконичность */
+        /* Группа чекбоксов для напитков */
         .checkbox-group {
             display: flex;
             flex-direction: column;
@@ -210,7 +230,7 @@
             cursor: pointer;
         }
 
-        /* Дресс-код сетка без изменений */
+        /* Дресс-код сетка */
         .dresscode-gallery {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -329,7 +349,7 @@
         </div>
     </section>
 
-    <!-- Место + фото + важные пожелания -->
+    <!-- Место + фото + важные пожелания (ДОБАВЛЕН ТЕКСТ ПРО ДЕТЕЙ) -->
     <section class="py-24 md:py-32 px-6 bg-[#fcfbf9]">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="serif text-4xl md:text-5xl mb-12 italic" data-aos="fade-up">Детали торжества</h2>
@@ -360,6 +380,9 @@
                     <p class="font-light text-gray-500 mb-4 text-sm leading-relaxed">
                         <strong>Мы очень хотим, чтобы вы по-настоящему отдохнули и повеселились на нашей свадьбе!</strong>
                     </p>
+                    <!-- ДОБАВЛЕННЫЙ ТЕКСТ ПРО ДЕТЕЙ (без иконок) -->
+                    <p class="font-light text-gray-500 text-sm leading-relaxed mt-4 pt-3 border-t border-gray-100">
+Если вы все же решите присутствовать с детьми, то не забудьте об этом указать в анкете подтверждения, чтобы мы смогли организовать для них комфортные условия.                    </p>
                 </div>
             </div>
         </div>
@@ -417,7 +440,7 @@
         </div>
     </section>
 
-    <!-- RSVP форма — все дополнительные вопросы теперь в едином стиле без отдельных рамок -->
+    <!-- RSVP форма -->
     <section class="py-24 md:py-32 dark-section">
         <div class="max-w-2xl mx-auto px-6">
             <div class="text-center mb-12" data-aos="fade-up">
@@ -442,7 +465,7 @@
                     </select>
                 </div>
                 
-                <!-- Сопровождающие (единый стиль, без рамок) -->
+                <!-- Сопровождающие -->
                 <div id="companionQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">С вами кто-то будет?</label>
                     <select id="companionSelect" name="Сопровождающие" class="rsvp-input text-white text-base w-full">
@@ -451,7 +474,7 @@
                     </select>
                 </div>
                 
-                <!-- Имена гостей (без рамок, только поле) -->
+                <!-- Имена гостей -->
                 <div id="guestNamesWrapper" class="conditional-wrapper">
                     <div>
                         <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Введите все имена (если с вами будут гости)</label>
@@ -460,7 +483,7 @@
                     </div>
                 </div>
 
-                <!-- Дети — теперь без обёртки-рамки, точно такой же как другие поля -->
+                <!-- Дети -->
                 <div id="kidsBlockWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2">Будут ли с вами дети?</label>
                     <select id="childrenSelect" name="Дети будут" class="rsvp-input text-white text-base w-full">
@@ -468,7 +491,6 @@
                         <option value="Да, с детьми">Да, дети будут с нами</option>
                     </select>
                     
-                    <!-- Дополнительное поле для информации о детях (появляется без дополнительных рамок) -->
                     <div id="childrenInfoWrapper" class="conditional-wrapper">
                         <div>
                             <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-2 mt-3">Имена и возраст детей</label>
@@ -478,7 +500,7 @@
                     </div>
                 </div>
 
-                <!-- Напитки (лаконично, единый стиль) -->
+                <!-- Напитки -->
                 <div id="drinksQuestionWrapper" style="display: none;">
                     <label class="block text-[11px] uppercase tracking-wider text-[#c5a059] mb-3">Предпочтения в напитках (можно выбрать несколько)</label>
                     <div class="checkbox-group">
@@ -530,7 +552,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Управление видимостью — все блоки в едином стиле, без лишних декораций
+        // Логика формы
         const attendanceSelect = document.getElementById('attendanceSelect');
         const companionWrapper = document.getElementById('companionQuestionWrapper');
         const companionSelect = document.getElementById('companionSelect');
@@ -596,7 +618,7 @@
                 try { 
                     const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } }); 
                     if (response.ok) { 
-                        statusDiv.innerHTML = 'Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением '; 
+                        statusDiv.innerHTML = 'Спасибо! Ваш ответ успешно отправлен. Ждём вас с нетерпением'; 
                         statusDiv.style.color = '#c5a059'; 
                         form.reset(); 
                         if (attendanceSelect) attendanceSelect.value = ''; 
