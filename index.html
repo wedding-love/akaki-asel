@@ -282,10 +282,34 @@
             margin: 0 2px;
             vertical-align: middle;
         }
+
+        /* Стили для кнопки MAX */
+        .max-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background-color: #1a1a1a;
+            color: white;
+            border-radius: 9999px;
+            transition: all 0.5s ease;
+            font-weight: 300;
+        }
+
+        .max-button:hover {
+            background-color: var(--color-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(197, 160, 89, 0.4);
+        }
+
+        .max-button svg {
+            transition: color 0.3s ease;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-image"></div>
         <div class="hero-content text-center text-white z-10 px-4">
@@ -304,6 +328,7 @@
         </div>
     </section>
 
+    <!-- Приветствие -->
     <section class="py-24 md:py-32 px-6">
         <div class="max-w-3xl mx-auto text-center">
             <div class="divider mb-12" data-aos="fade-down"></div>
@@ -385,7 +410,7 @@
                         <strong>Мы очень хотим, чтобы вы по-настоящему отдохнули и повеселились на нашей свадьбе!</strong>
                     </p>
                     <p class="font-light text-gray-500 text-sm leading-relaxed mt-4 pt-3 border-t border-gray-100">
-                        Если вы планируете прийти с детьми, пожалуйста, укажите это в анкете ниже. Мы с радостью организуем для них отдельную зону с аниматором, чтобы и детям, и родителям было комфортно и весело.
+                        Если вы планируете прийти с детьми, пожалуйста, укажите это в анкете ниже, чтобы мы смогли организовать для них комфортные условия.
                     </p>
                 </div>
             </div>
@@ -534,6 +559,22 @@
     <section class="py-20 px-6 bg-white">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="serif text-3xl md:text-4xl italic mb-12" data-aos="fade-up">Контакты</h2>
+            
+            <!-- Блок с ссылкой на MAX -->
+            <div class="mb-12" data-aos="fade-up" data-aos-delay="50">
+                <a href="https://max.ru/join/CU3bgCMD5tAlPSUYQ-uAnQquTpIVMUFmPYmvWTrBOrs" target="_blank" class="max-button group">
+                    <svg class="w-5 h-5 text-[#c5a059] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span class="uppercase tracking-widest text-[11px] font-light">Присоединиться в MAX</span>
+                </a>
+                <p class="text-sm text-gray-500 mt-4 font-light max-w-md mx-auto leading-relaxed">
+                    В этом канале мы будем делиться <strong>актуальной информацией</strong>, свежими <strong>фото и видео</strong> с нашего торжества, а также всеми новостями и приятными моментами подготовки. Оставайтесь на связи!
+                </p>
+            </div>
+
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#c5a059] to-transparent opacity-30 mb-10"></div>
+
             <div class="grid md:grid-cols-2 gap-8 mb-10" data-aos="fade-up">
                 <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Асель</h4><a href="tel:+799960741020" class="contact-link text-base font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 074-10-20</a></div>
                 <div class="flex flex-col items-center p-4 rounded-lg bg-[#f9f8f6]"><h4 class="serif text-xl mb-1">Акаки</h4><a href="tel:+799963982808" class="contact-link text-base font-light text-gray-600 hover:text-[#c5a059] transition">+7 996 398-28-08</a></div>
@@ -543,7 +584,13 @@
         </div>
     </section>
 
-    <footer class="py-16 text-center bg-[#f9f8f6]"><div class="serif text-2xl md:text-3xl italic mb-4">Акаки & Асель</div><p class="uppercase tracking-[0.3em] text-[9px] text-gray-400 mb-8">С любовью, до встречи!</p><div class="divider h-10"></div><p class="text-[8px] text-gray-300 mt-4">25 сентября 2026 | ЭкоПарк Раздолье</p></footer>
+    <!-- Footer -->
+    <footer class="py-16 text-center bg-[#f9f8f6]">
+        <div class="serif text-2xl md:text-3xl italic mb-4">Акаки & Асель</div>
+        <p class="uppercase tracking-[0.3em] text-[9px] text-gray-400 mb-8">С любовью, до встречи!</p>
+        <div class="divider h-10"></div>
+        <p class="text-[8px] text-gray-300 mt-4">25 сентября 2026 | ЭкоПарк Раздолье</p>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
